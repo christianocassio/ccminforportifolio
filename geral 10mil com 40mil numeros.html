@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartela de Bingo</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cartela de Bingo</h1>
+    <table id="cartela">
+        <!-- Linhas e colunas serão geradas dinamicamente -->
+    </table>
+    <button onclick="imprimirCartela()">Imprimir Cartela</button>
+
+    <script>
+        // Função para gerar números aleatórios únicos entre 0 e 9999
+        function gerarNumeroAleatorio(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Função para gerar a cartela de bingo
+        function gerarCartela() {
+            const cartela = document.getElementById('cartela');
+            cartela.innerHTML = ''; // Limpar a tabela
+
+            // Gerar números de 0 a 9999 para cada coluna
+            const numerosColuna1 = Array.from({ length: 10000 }, (_, i) => i);
+            const numerosColuna2 = Array.from({ length: 10000 }, (_, i) => i);
+            const numerosColuna3 = Array.from({ length: 10000 }, (_, i) => i);
+            const numerosColuna4 = Array.from({ length: 10000 }, (_, i) => i);
+
+            // Embaralhar os números de cada coluna
+            for (let i = numerosColuna1.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [numerosColuna1[i], numerosColuna1[j]] = [numerosColuna1[j], numerosColuna1[i]];
+            }
+            for (let i = numerosColuna2.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [numerosColuna2[i], numerosColuna2[j]] = [numerosColuna2[j], numerosColuna2[i]];
+            }
+            for (let i = numerosColuna3.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [numerosColuna3[i], numerosColuna3[j]] = [numerosColuna3[j], numerosColuna3[i]];
+            }
+            for (let i = numerosColuna4.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [numerosColuna4[i], numerosColuna4[j]] = [numerosColuna4[j], numerosColuna4[i]];
+            }
+
+            // Gerar linhas e colunas
+            for (let i = 0; i < 10000; i++) { 
+                const linha = cartela.insertRow(i);
+                linha.insertCell(0).innerHTML = numerosColuna1[i].toString().padStart(4, '0');
+                linha.insertCell(1).innerHTML = numerosColuna2[i].toString().padStart(4, '0');
+                linha.insertCell(2).innerHTML = numerosColuna3[i].toString().padStart(4, '0');
+                linha.insertCell(3).innerHTML = numerosColuna4[i].toString().padStart(4, '0');
+            }
+        }
+
+        // Função para imprimir a cartela
+        function imprimirCartela() {
+            window.print();
+        }
+
+        // Gerar a cartela de bingo ao carregar a página
+        document.addEventListener('DOMContentLoaded', gerarCartela);
+    </script>
+</body>
+</html>

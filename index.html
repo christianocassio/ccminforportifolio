@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christiano Cássio Miranda - Analista e Desenvolvedor de Sistemas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0a1a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Animated grid background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 255, 170, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 170, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(0, 255, 170, 0.6);
+            border-radius: 50%;
+            animation: float linear infinite;
+            box-shadow: 0 0 6px rgba(0, 255, 170, 0.4);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Glowing circle behind text */
+        .glow-circle {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 170, 0.08) 0%, transparent 70%);
+            animation: pulseGlow 4s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        }
+
+        /* Rotating ring */
+        .ring {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 420px;
+            height: 420px;
+            border: 1px solid rgba(0, 255, 170, 0.15);
+            border-radius: 50%;
+            animation: rotateSlow 30s linear infinite;
+            z-index: 1;
+        }
+
+        .ring::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: #00ffaa;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00ffaa;
+        }
+
+        .ring2 {
+            width: 480px;
+            height: 480px;
+            border-color: rgba(0, 150, 255, 0.1);
+            animation-direction: reverse;
+            animation-duration: 25s;
+        }
+
+        .ring2::before {
+            background: #0096ff;
+            box-shadow: 0 0 15px #0096ff;
+        }
+
+        @keyframes rotateSlow {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Horizontal scan line */
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 170, 0.3), transparent);
+            animation: scanDown 8s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes scanDown {
+            0% { top: -2px; }
+            100% { top: 100%; }
+        }
+
+        /* Main content */
+        .container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Top decorative brackets */
+        .brackets {
+            font-size: 14px;
+            color: #00ffaa;
+            letter-spacing: 12px;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInDown 1s ease 0.5s forwards;
+            font-family: 'Courier New', monospace;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Name */
+        .name {
+            font-size: clamp(28px, 5vw, 52px);
+            font-weight: 700;
+            letter-spacing: 4px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease 0.8s forwards;
+            text-shadow: 0 0 30px rgba(0, 255, 170, 0.3);
+        }
+
+        .name .first-name {
+            color: #ffffff;
+        }
+
+        .name .last-name {
+            color: #00ffaa;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Divider line */
+        .divider {
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffaa, #0096ff, transparent);
+            margin: 10px auto 20px;
+            animation: expandLine 1.5s ease 1.2s forwards;
+        }
+
+        @keyframes expandLine {
+            from { width: 0; }
+            to { width: min(500px, 80vw); }
+        }
+
+        /* Title / Role */
+        .role {
+            font-size: clamp(14px, 2.5vw, 20px);
+            color: #a0a0c0;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.8s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Enter button */
+        .enter-btn {
+            display: inline-block;
+            padding: 14px 50px;
+            border: 1px solid #00ffaa;
+            color: #00ffaa;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 1s ease 2.2s forwards;
+            cursor: pointer;
+            background: transparent;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .enter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 170, 0.15), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .enter-btn:hover::before {
+            left: 100%;
+        }
+
+        .enter-btn:hover {
+            background: rgba(0, 255, 170, 0.1);
+            box-shadow: 0 0 30px rgba(0, 255, 170, 0.2), inset 0 0 30px rgba(0, 255, 170, 0.05);
+            transform: scale(1.05);
+        }
+
+        /* Corner decorations */
+        .corner {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            z-index: 10;
+        }
+
+        .corner-tl {
+            top: 20px;
+            left: 20px;
+            border-top: 2px solid rgba(0, 255, 170, 0.4);
+            border-left: 2px solid rgba(0, 255, 170, 0.4);
+        }
+
+        .corner-tr {
+            top: 20px;
+            right: 20px;
+            border-top: 2px solid rgba(0, 255, 170, 0.4);
+            border-right: 2px solid rgba(0, 255, 170, 0.4);
+        }
+
+        .corner-bl {
+            bottom: 20px;
+            left: 20px;
+            border-bottom: 2px solid rgba(0, 255, 170, 0.4);
+            border-left: 2px solid rgba(0, 255, 170, 0.4);
+        }
+
+        .corner-br {
+            bottom: 20px;
+            right: 20px;
+            border-bottom: 2px solid rgba(0, 255, 170, 0.4);
+            border-right: 2px solid rgba(0, 255, 170, 0.4);
+        }
+
+        /* Typing cursor effect on role text */
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: #00ffaa;
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Bottom status bar */
+        .status-bar {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: rgba(0, 255, 170, 0.4);
+            letter-spacing: 3px;
+            font-family: 'Courier New', monospace;
+            z-index: 10;
+            opacity: 0;
+            animation: fadeIn 1s ease 2.5s forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .ring, .ring2 {
+                display: none;
+            }
+            .glow-circle {
+                width: 300px;
+                height: 300px;
+            }
+            .corner {
+                width: 25px;
+                height: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background effects -->
+    <div class="grid-bg"></div>
+    <div class="particles" id="particles"></div>
+    <div class="glow-circle"></div>
+    <div class="ring"></div>
+    <div class="ring ring2"></div>
+    <div class="scanline"></div>
+
+    <!-- Corner decorations -->
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+
+    <!-- Main content -->
+    <div class="container">
+        <div class="brackets">&lt; / &gt;</div>
+        <h1 class="name">
+            <span class="first-name">Christiano Cássio</span><br>
+            <span class="last-name">Miranda</span>
+        </h1>
+        <div class="divider"></div>
+        <p class="role">
+            Analista e Desenvolvedor de Sistemas<span class="typing-cursor"></span>
+        </p>
+        <a href="portfolio.html" class="enter-btn">Entrar</a>
+    </div>
+
+    <!-- Status bar -->
+    <div class="status-bar">SYS.ONLINE // PORTFOLIO.READY</div>
+
+    <!-- Particle generator -->
+    <script>
+        (function() {
+            var container = document.getElementById('particles');
+            var count = 30;
+            for (var i = 0; i < count; i++) {
+                var p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDuration = (Math.random() * 10 + 8) + 's';
+                p.style.animationDelay = (Math.random() * 10) + 's';
+                p.style.width = (Math.random() * 3 + 1) + 'px';
+                p.style.height = p.style.width;
+                container.appendChild(p);
+            }
+        })();
+    </script>
+</body>
+</html>

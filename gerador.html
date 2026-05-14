@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geração de Cartela de Bingo</title>
+	<style>
+		body {
+			zoom: 70%;
+		}
+		
+		.container {
+			width: 50%;
+			margin: 40px auto;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			font-size: 24px;
+		}
+		
+		.form-group {
+			margin-bottom: 20px;
+		}
+		
+		.form-group label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		
+		.form-group input {
+			width: 100%;
+			height: 60px;
+			margin-bottom: 20px;
+			padding: 20px;
+			border: 2px solid #ccc;
+			font-size: 24px;
+		}
+		
+		.botao-gerar {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 20px 40px;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+			font-size: 24px;
+		}
+		
+		.botao-gerar:hover {
+			background-color: #3e8e41;
+		}
+		
+		#numero1 {
+			color: red;
+		}
+		
+		#numero2 {
+			color: black;
+		}
+		
+		#numero3 {
+			color: blue;
+		}
+		
+		#numero4 {
+			color: green;
+		}
+		
+		.botao-imprimir {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 20px 40px;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			font-size: 24px;
+		}
+		
+		.botao-imprimir:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2 style="font-size: 36px;">Geração de Cartela de Bingo</h2>
+		<form>
+			<button class="botao-gerar" onclick="gerarNumerosAleatorios()">Gerar Números Aleatórios</button>
+			<div id="numeros-gerados">
+				<div class="form-group">
+					<label for="numero1">Número 1</label>
+					<input type="number" id="numero1" readonly>
+				</div>
+				<div class="form-group">
+					<label for="numero2">Número 2</label>
+					<input type="number" id="numero2" readonly>
+				</div>
+				<div class="form-group">
+					<label for="numero3">Número 3</label>
+					<input type="number" id="numero3" readonly>
+				</div>
+				<div class="form-group">
+					<label for="numero4">Número 4</label>
+					<input type="number" id="numero4" readonly>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<button class="botao-imprimir" onclick="window.print()">Imprimir Cartela</button>
+	
+	<script>
+		let numerosGerados = [0, 0, 0, 0];
+		
+		function gerarNumerosAleatorios() {
+			for (let i = 0; i < 4; i++) {
+				numerosGerados[i] = Math.floor(Math.random() * 9000) + 1000;
+			}
+			document.getElementById('numero1').value = numerosGerados[0];
+			document.getElementById('numero2').value = numerosGerados[1];
+			document.getElementById('numero3').value = numerosGerados[2];
+			document.getElementById('numero4').value = numerosGerados[3];
+		}
+		
+		window.onload = function() {
+			gerarNumerosAleatorios();
+		};
+	</script>
+</body>
+</html>

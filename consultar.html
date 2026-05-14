@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pesquisar Sorteio</title>
+</head>
+<body>
+
+    <h1>Pesquisar Número no Sorteio</h1>
+
+    <form method="POST">
+        <label for="numero_pesquisa">Digite o número para pesquisar:</label>
+        <input type="text" id="numero_pesquisa" name="numero_pesquisa">
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $numero_pesquisa = $_POST["numero_pesquisa"];
+
+        // Informações de conexão com o banco de dados
+        $servername = "vuxmysql12";
+        $username = "chriscassio";
+        $password = "Chris@6237#";
+        $dbname = "testeasc2";
+        $tablename = "sorteios";
+
+        // Criar conexão
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Verificar conexão
+        if ($conn->connect_error) {
+            die("Erro na conexão com o banco de dados: " . $conn->connect_error);
+        }
+
+        // Preparar a consulta SQL
+        $sql = "SELECT id, numero1, numero2, numero3, numero4 FROM $tablename WHERE numero1 = ? OR numero2 = ? OR numero3 = ? OR numero4 = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("iiii", $numero_pesquisa, $numero_pesquisa, $numero_pesquisa, $numero_pesquisa);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            echo "<h2>Resultados da Pesquisa:</h2>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<p><strong>ID:</strong> " . $row["id"] . "</p>";
+                echo "<p>Número 1: " . $row["numero1"] . "</p>";
+                echo "<p>Número 2: " . $row["numero2"] . "</p>";
+                echo "<p>Número 3: " . $row["numero3"] . "</p>";
+                echo "<p>Número 4: " . $row["numero4"] . "</p>";
+                echo "<hr>";
+            }
+        } else {
+            echo "<p>Nenhum registro encontrado com o número: " . $numero_pesquisa . "</p>";
+        }
+
+        // Fechar a conexão
+        $stmt->close();
+        $conn->close();
+    }
+    ?>
+
+</body>
+</html>
