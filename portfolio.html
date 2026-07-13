@@ -87,6 +87,19 @@
     font-family:'JetBrains Mono',monospace; font-size:.72rem; letter-spacing:.35em;
     color:var(--green); text-transform:uppercase; margin-bottom:18px;
   }
+  .avatar-ring{
+    position:relative; width:132px; height:132px; margin:0 auto 26px;
+    border-radius:50%;
+    background:conic-gradient(from 200deg, var(--green), var(--blue), transparent 60%);
+    padding:3px;
+    animation:spin 10s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .avatar-ring{animation:none;} }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .avatar-ring img{
+    display:block; width:100%; height:100%; border-radius:50%;
+    object-fit:cover; border:3px solid var(--bg); background:var(--bg-panel);
+  }
   h1.name{
     font-family:'Space Grotesk',sans-serif; font-weight:700;
     font-size:clamp(2rem, 5vw, 3.1rem); margin:0 0 6px; line-height:1.1;
@@ -220,6 +233,7 @@
 
   <div class="hero">
     <div class="eyebrow">// curriculum vitae</div>
+    <div class="avatar-ring"><img src="foto.png" alt="Foto de Christiano Cássio Miranda"></div>
     <h1 class="name">Christiano Cássio <span>Miranda</span></h1>
     <div class="role">Analista &amp; Desenvolvedor de Sistemas</div>
     <div class="quick-contacts">
@@ -395,21 +409,21 @@
   <section id="documentos">
     <div class="sec-head"><span class="sec-index">06</span><h2>Documentos &amp; Evidências</h2><div class="sec-rule"></div></div>
     <div class="doc-grid">
-      <button class="doc-btn" onclick="window.open('/Evidencias/Curriculum.pdf','_blank')">Currículo em PDF</button>
-      <button class="doc-btn" onclick="window.open('/Evidencias/certificaken.pdf','_blank')">Certificado Téc. Microinformática</button>
-      <button class="doc-btn" onclick="window.open('/Evidencias/Ssenaicertifica.pdf','_blank')">Certificado SENAI</button>
-      <button class="doc-btn" onclick="window.open('/Evidencias/arcertificado.pdf','_blank')">Certificado Arcelor</button>
-      <button class="doc-btn" onclick="window.open('/Evidencias/arcppp.pdf','_blank')">PPP — Arcelor Mittal</button>
-      <button class="doc-btn" onclick="window.open('/Evidencias/contcaxuxa.pdf','_blank')">Contrato — Grupo Caxuxa</button>
-      <button class="doc-btn" onclick="window.open('/Evidencias/distrcaxuxa.pdf','_blank')">Distrato — Grupo Caxuxa</button>
-      <button class="doc-btn" onclick="window.open('/Evidencias/projetoscaxuxa.pdf','_blank')">Projetos — Grupo Caxuxa</button>
-      <button class="doc-btn" onclick="window.open('/Evidencias/arklokproducao.pdf','_blank')">Arklok — Localiza</button>
-      <button class="doc-btn" onclick="window.open('/Evidencias/algar.pdf','_blank')">Algar Tech — Termo Confiabilidade</button>
-      <button class="doc-btn" onclick="window.open('/Evidencias/positivo.pdf','_blank')">Grupo Positivo — ASO</button>
-      <button class="doc-btn" onclick="window.open('/Evidencias/termonavasemparar.pdf','_blank')">Nava/Sem Parar — Confidencialidade</button>
-      <button class="doc-btn" onclick="window.open('/Evidencias/contrastartec.pdf','_blank')">Startec — Contrato</button>
-      <button class="doc-btn" onclick="window.open('/Evidencias/fasfmatric.pdf','_blank')">Fasf — Matrícula/Trancamento</button>
-      <button class="doc-btn" onclick="window.open('/Evidencias/fasfsiccob.pdf','_blank')">Fasf — Treinamento Ciências Contábeis</button>
+      <button class="doc-btn" onclick="window.open('/evidencias/curriculum.pdf','_blank')">Currículo em PDF</button>
+      <button class="doc-btn" onclick="window.open('/evidencias/certificaken.pdf','_blank')">Certificado Téc. Microinformática</button>
+      <button class="doc-btn" onclick="window.open('/evidencias/ssenaicertifica.pdf','_blank')">Certificado SENAI</button>
+      <button class="doc-btn" onclick="window.open('/evidencias/arcertificado.pdf','_blank')">Certificado Arcelor</button>
+      <button class="doc-btn" onclick="window.open('/evidencias/arcppp.pdf','_blank')">PPP — Arcelor Mittal</button>
+      <button class="doc-btn" onclick="window.open('/evidencias/contcaxuxa.pdf','_blank')">Contrato — Grupo Caxuxa</button>
+      <button class="doc-btn" onclick="window.open('/evidencias/distrcaxuxa.pdf','_blank')">Distrato — Grupo Caxuxa</button>
+      <button class="doc-btn" onclick="window.open('/evidencias/projetoscaxuxa.pdf','_blank')">Projetos — Grupo Caxuxa</button>
+      <button class="doc-btn" onclick="window.open('/evidencias/arklokproducao.pdf','_blank')">Arklok — Localiza</button>
+      <button class="doc-btn" onclick="window.open('/evidencias/algar.pdf','_blank')">Algar Tech — Termo Confiabilidade</button>
+      <button class="doc-btn" onclick="window.open('/evidencias/positivo.pdf','_blank')">Grupo Positivo — ASO</button>
+      <button class="doc-btn" onclick="window.open('/evidencias/termonavasemparar.pdf','_blank')">Nava/Sem Parar — Confidencialidade</button>
+      <button class="doc-btn" onclick="window.open('/evidencias/contrastartec.pdf','_blank')">Startec — Contrato</button>
+      <button class="doc-btn" onclick="window.open('/evidencias/fasfmatric.pdf','_blank')">Fasf — Matrícula/Trancamento</button>
+      <button class="doc-btn" onclick="window.open('/evidencias/fasfsiccob.pdf','_blank')">Fasf — Treinamento Ciências Contábeis</button>
     </div>
   </section>
 
