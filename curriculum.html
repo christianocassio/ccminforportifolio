@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christiano Cássio Miranda — Analista e Desenvolvedor de Sistemas</title>
+<meta name="description" content="Currículo de Christiano Cássio Miranda — Analista e Desenvolvedor de Sistemas, especialista em TI, automação e gestão de banco de dados.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:            #060a10;
+    --bg-panel:      #0b131c;
+    --bg-panel-2:    #0e1822;
+    --line:          rgba(57,255,176,.18);
+    --line-strong:   rgba(57,255,176,.4);
+    --green:         #38ffb0;
+    --green-dim:     #1f8f68;
+    --blue:          #4ea8ff;
+    --text:          #e7f0f5;
+    --text-dim:      #8296a3;
+    --text-faint:    #4a5964;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ambient grid backdrop */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:42px 42px;
+    opacity:.35;
+    pointer-events:none;
+    z-index:0;
+    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  }
+
+  a{color:var(--green); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  .wrap{position:relative; z-index:1; max-width:960px; margin:0 auto; padding:0 28px 80px;}
+
+  code, .mono{font-family:'JetBrains Mono', monospace;}
+
+  /* corner-bracket frame, echoes the hero page */
+  .frame{position:relative; border:1px solid var(--line); border-radius:2px;}
+  .frame::before, .frame::after,
+  .frame > .c1, .frame > .c2{
+    content:""; position:absolute; width:16px; height:16px; pointer-events:none;
+  }
+  .frame::before{ top:-1px; left:-1px; border-top:2px solid var(--green); border-left:2px solid var(--green);}
+  .frame::after{ top:-1px; right:-1px; border-top:2px solid var(--green); border-right:2px solid var(--green);}
+  .frame .c1{ bottom:-1px; left:-1px; border-bottom:2px solid var(--green); border-left:2px solid var(--green);}
+  .frame .c2{ bottom:-1px; right:-1px; border-bottom:2px solid var(--green); border-right:2px solid var(--green);}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:relative; z-index:2;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 28px; max-width:960px; margin:0 auto;
+    font-family:'JetBrains Mono',monospace; font-size:.75rem; color:var(--text-dim);
+    letter-spacing:.05em;
+  }
+  .topbar a.back{color:var(--text-dim); border:1px solid var(--line); padding:6px 12px; border-radius:3px; transition:.2s;}
+  .topbar a.back:hover{color:var(--green); border-color:var(--green); text-decoration:none;}
+  .status-dot{display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--green); box-shadow:0 0 8px var(--green); margin-right:6px; animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:40px 0 50px; text-align:center;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace; font-size:.72rem; letter-spacing:.35em;
+    color:var(--green); text-transform:uppercase; margin-bottom:18px;
+  }
+  h1.name{
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:clamp(2rem, 5vw, 3.1rem); margin:0 0 6px; line-height:1.1;
+  }
+  h1.name span{color:var(--green);}
+  .role{
+    font-family:'JetBrains Mono',monospace; letter-spacing:.25em; text-transform:uppercase;
+    color:var(--text-dim); font-size:.85rem; margin-bottom:28px;
+  }
+  .quick-contacts{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
+    font-family:'JetBrains Mono',monospace; font-size:.78rem;
+  }
+  .chip{
+    border:1px solid var(--line); padding:7px 14px; border-radius:20px; color:var(--text-dim);
+    background:var(--bg-panel);
+  }
+  .chip strong{color:var(--text); font-weight:500;}
+
+  /* ---------- section shell ---------- */
+  section{margin-top:56px;}
+  .sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:22px;}
+  .sec-index{font-family:'JetBrains Mono',monospace; color:var(--green-dim); font-size:.85rem;}
+  h2{
+    font-family:'Space Grotesk',sans-serif; font-size:1.3rem; margin:0; font-weight:600;
+    color:var(--text);
+  }
+  .sec-rule{flex:1; height:1px; background:linear-gradient(90deg, var(--line-strong), transparent);}
+
+  .panel{background:var(--bg-panel); padding:26px 28px;}
+
+  /* ---------- perfil / dados pessoais ---------- */
+  .grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:14px 32px;}
+  .field{font-size:.92rem;}
+  .field .k{
+    display:block; font-family:'JetBrains Mono',monospace; font-size:.68rem;
+    text-transform:uppercase; letter-spacing:.12em; color:var(--text-faint); margin-bottom:3px;
+  }
+  .field .v{color:var(--text);}
+  @media (max-width:640px){ .grid-2{grid-template-columns:1fr;} }
+
+  /* ---------- cargos / tags ---------- */
+  .tag-cloud{display:flex; flex-wrap:wrap; gap:10px;}
+  .tag{
+    font-family:'JetBrains Mono',monospace; font-size:.78rem;
+    border:1px solid var(--line); color:var(--text); background:var(--bg-panel-2);
+    padding:8px 14px; border-radius:3px; transition:.2s;
+  }
+  .tag:hover{border-color:var(--green); color:var(--green);}
+
+  /* ---------- especialidade ---------- */
+  .lede{font-size:1.02rem; color:var(--text); max-width:66ch;}
+  .lede .hl{color:var(--green);}
+
+  /* ---------- experiência: terminal log timeline ---------- */
+  .log{border-left:1px solid var(--line); margin-left:6px; padding-left:0;}
+  .entry{position:relative; padding:0 0 30px 26px; border-left:1px solid var(--line); margin-left:5px;}
+  .entry:last-child{border-left-color:transparent; padding-bottom:0;}
+  .entry::before{
+    content:""; position:absolute; left:-5px; top:4px; width:9px; height:9px;
+    background:var(--bg); border:2px solid var(--green); border-radius:50%;
+  }
+  .entry .row{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 14px; margin-bottom:6px;}
+  .entry h3{font-family:'Space Grotesk',sans-serif; font-size:1.02rem; margin:0; color:var(--text); font-weight:600;}
+  .entry .period{font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--blue);}
+  .entry .meta{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px;}
+  .entry .meta span{
+    font-family:'JetBrains Mono',monospace; font-size:.68rem; color:var(--text-dim);
+    border:1px solid var(--line); border-radius:3px; padding:3px 8px;
+  }
+  .entry p{margin:0; color:var(--text-dim); font-size:.9rem; max-width:74ch;}
+  .entry .role-title{color:var(--green); font-size:.85rem; font-family:'JetBrains Mono',monospace;}
+
+  details.more{margin-top:14px;}
+  details.more summary{
+    cursor:pointer; list-style:none; font-family:'JetBrains Mono',monospace;
+    font-size:.75rem; color:var(--text-dim); border:1px solid var(--line); display:inline-block;
+    padding:8px 16px; border-radius:20px;
+  }
+  details.more summary::-webkit-details-marker{display:none;}
+  details.more summary:hover{color:var(--green); border-color:var(--green);}
+  details.more[open] summary{color:var(--green); border-color:var(--green);}
+
+  /* ---------- formação ---------- */
+  .edu-item{padding:16px 0; border-bottom:1px solid var(--line);}
+  .edu-item:last-child{border-bottom:none;}
+  .edu-item h3{font-family:'Space Grotesk',sans-serif; font-size:1rem; margin:0 0 4px; font-weight:600;}
+  .edu-item .inst{color:var(--text-dim); font-size:.88rem;}
+  .edu-item .yr{font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--blue);}
+
+  /* ---------- documentos ---------- */
+  .doc-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:10px;}
+  .doc-btn{
+    display:flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace; font-size:.76rem; text-align:left;
+    background:var(--bg-panel-2); border:1px solid var(--line); color:var(--text-dim);
+    padding:12px 14px; border-radius:4px; cursor:pointer; transition:.2s;
+  }
+  .doc-btn:hover{border-color:var(--green); color:var(--green);}
+  .doc-btn::before{content:"›"; color:var(--green);}
+
+  /* ---------- footer ---------- */
+  footer.page-footer{
+    margin-top:70px; padding-top:26px; border-top:1px solid var(--line);
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px;
+    font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--text-faint);
+  }
+  .social-links{display:flex; gap:16px;}
+  .print-btn{
+    font-family:'JetBrains Mono',monospace; font-size:.75rem; color:var(--text-dim);
+    background:transparent; border:1px solid var(--line); padding:8px 16px; border-radius:20px;
+    cursor:pointer;
+  }
+  .print-btn:hover{color:var(--green); border-color:var(--green);}
+
+  @media print{
+    body::before{display:none;}
+    .topbar, .print-btn, details.more summary{display:none;}
+    body{background:#fff; color:#111;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="back" href="https://ccminforportifolio.netlify.app">&larr; portfolio</a>
+  <span><span class="status-dot"></span>cv.online</span>
+</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">// curriculum vitae</div>
+    <h1 class="name">Christiano Cássio <span>Miranda</span></h1>
+    <div class="role">Analista &amp; Desenvolvedor de Sistemas</div>
+    <div class="quick-contacts">
+      <span class="chip"><strong>Email</strong> · <a href="mailto:chriscassiomiranda@gmail.com">chriscassiomiranda@gmail.com</a></span>
+      <span class="chip"><strong>Tel</strong> · (31) 9 9759-7441</span>
+      <span class="chip"><strong>Base</strong> · Belo Horizonte / João Monlevade, MG</span>
+      <span class="chip"><strong>LinkedIn</strong> · <a href="https://www.linkedin.com/in/christiano-c%C3%A1ssio-miranda-09917060" target="_blank" rel="noopener">/in/christiano-cássio-miranda</a></span>
+    </div>
+  </div>
+
+  <!-- PERFIL -->
+  <section id="perfil">
+    <div class="sec-head"><span class="sec-index">01</span><h2>Dados Pessoais</h2><div class="sec-rule"></div></div>
+    <div class="panel frame"><span class="c1"></span><span class="c2"></span>
+      <div class="grid-2">
+        <div class="field"><span class="k">Nome</span><span class="v">Christiano Cássio Miranda</span></div>
+        <div class="field"><span class="k">Estado civil</span><span class="v">Divorciado</span></div>
+        <div class="field"><span class="k">Endereço</span><span class="v">Belo Horizonte (Calafate) / João Monlevade — MG</span></div>
+        <div class="field"><span class="k">CNH</span><span class="v">Categoria B</span></div>
+        <div class="field"><span class="k">Tipo de contratação</span><span class="v">CLT ou PJ — a combinar</span></div>
+        <div class="field"><span class="k">Disponibilidade</span><span class="v">Imediata</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARGOS -->
+  <section id="cargos">
+    <div class="sec-head"><span class="sec-index">02</span><h2>Áreas de Atuação</h2><div class="sec-rule"></div></div>
+    <div class="tag-cloud">
+      <span class="tag">Gestor de TI &amp; SI</span>
+      <span class="tag">Gestor de Projetos de Implantação</span>
+      <span class="tag">Suporte &amp; Automação Comercial</span>
+      <span class="tag">Administração de Banco de Dados</span>
+      <span class="tag">SQL Server · PostgreSQL · MySQL · Access</span>
+      <span class="tag">Power BI (em treinamento)</span>
+      <span class="tag">Automação de Postos de Combustível</span>
+      <span class="tag">Programação (SQL, VB, Access, Office)</span>
+      <span class="tag">Gestão Administrativa &amp; Comercial</span>
+      <span class="tag">Inspeção &amp; Qualidade (ISO 9001)</span>
+    </div>
+  </section>
+
+  <!-- ESPECIALIDADE -->
+  <section id="especialidade">
+    <div class="sec-head"><span class="sec-index">03</span><h2>Especialidade</h2><div class="sec-rule"></div></div>
+    <p class="lede">
+      <span class="hl">Gerenciamento de banco de dados</span>, desenvolvimento de integrações e
+      <span class="hl">suporte à implantação de sistemas</span>, com foco em automação comercial
+      e de postos de combustíveis — unindo consultoria técnica e gestão operacional de ponta a ponta.
+    </p>
+  </section>
+
+  <!-- EXPERIÊNCIA -->
+  <section id="experiencia">
+    <div class="sec-head"><span class="sec-index">04</span><h2>Experiência Profissional</h2><div class="sec-rule"></div></div>
+
+    <div class="log">
+
+      <div class="entry">
+        <div class="row"><h3>Posto Vargem Linda</h3><span class="period">11/2024 – 02/2025</span></div>
+        <div class="role-title">Gerência</div>
+        <div class="meta"><span>CNPJ 03.960.741/0001-02</span><span>São Domingos do Prata, MG</span></div>
+        <p>Gestão administrativa e operacional total, controle de estoque e produção interna, obrigações fiscais mensais, gestão de equipe (escalas, horas, adicionais), liberação e gerenciamento do AVCB e implantação de sistema de medição.</p>
+      </div>
+
+      <div class="entry">
+        <div class="row"><h3>Grupo Localiza · Arklok</h3><span class="period">10/2024</span></div>
+        <div class="role-title">Técnico de Suporte PL</div>
+        <div class="meta"><span>CNPJ 10.489.713/0001-14</span><span>Belo Horizonte, MG</span></div>
+        <p>Suporte e preparação de desktops e notebooks para uso em campo, seguindo padrões ISO atualizados na matriz do Grupo Localiza.</p>
+      </div>
+
+      <div class="entry">
+        <div class="row"><h3>Algar Tech</h3><span class="period">08/2024 – 09/2024</span></div>
+        <div class="role-title">Técnico de Suporte PL</div>
+        <div class="meta"><span>CNPJ 05.510.654/0008-55</span><span>Belo Horizonte / Contagem, MG</span></div>
+        <p>Atendimento corretivo em unidades Carrefour da região metropolitana, mantendo mais de 200 PDVs operacionais (TPLinux, térmicas, TEF, balanças e leitores).</p>
+      </div>
+
+      <div class="entry">
+        <div class="row"><h3>Grupo Positivo</h3><span class="period">01/2024 – 07/2024</span></div>
+        <div class="role-title">Técnico de Implantação</div>
+        <div class="meta"><span>Minas Gerais</span></div>
+        <p>Inventário de hardware e adequação de agências ao padrão Itaú/Santander: instalação de softwares, substituição de equipamentos e liberação para uso após testes.</p>
+      </div>
+
+      <div class="entry">
+        <div class="row"><h3>Grupo Caxuxa</h3><span class="period">07/2018 – 01/2023</span></div>
+        <div class="role-title">Gestor de SI e TI</div>
+        <div class="meta"><span>CNPJ 19.848.233/0001-77</span><span>Rodovia BR-262, Luz, MG</span></div>
+        <p>Gestão de TI e SI em todos os segmentos do grupo (mais de 40 CNPJs, ~800 colaboradores). Administração de banco de dados via SQL (destaque LINX Autosystem), desenvolvimento de relatórios via ODBC, coordenação de equipe e projetos de automação, além de atuação em áreas fiscais, contábeis e financeiras.</p>
+      </div>
+
+      <details class="more">
+        <summary>Ver histórico completo (1997 – 2018) ▾</summary>
+
+        <div class="entry" style="margin-top:24px;">
+          <div class="row"><h3>Informinas Informática MG Ltda</h3><span class="period">08/2013 – 06/2018</span></div>
+          <div class="role-title">Gerente Comercial</div>
+          <div class="meta"><span>CNPJ 65.153.611/0001-15</span><span>Belo Horizonte, MG</span></div>
+          <p>Iniciou como técnico de implantação viajando por Minas Gerais e o Brasil; migrou para suporte técnico interno (Help Desk BH) e, por performance, foi promovido à coordenação da equipe comercial.</p>
+        </div>
+
+        <div class="entry">
+          <div class="row"><h3>Informinas Informática MG Ltda</h3><span class="period">11/1999 – 09/2002</span></div>
+          <div class="role-title">Técnico de Comunicação de Dados</div>
+          <div class="meta"><span>CNPJ 65.153.611/0001-15</span><span>Belo Horizonte, MG</span></div>
+          <p>Implantação, manutenção preventiva e corretiva de sistemas de automação de postos de combustível, com posterior transição para suporte técnico interno.</p>
+        </div>
+
+        <div class="entry">
+          <div class="row"><h3>Autônomo</h3><span class="period">10/2002 – 08/2009</span></div>
+          <div class="role-title">Gestão, Sistema e Automação de Postos de Combustíveis</div>
+          <div class="meta"><span>Cariacica · Vitória · Vila Velha · Serra · Guarapari · São Mateus, ES</span></div>
+          <p>Vendas e suporte técnico (interno e em campo) em cerca de 30 postos, atuando como agente das plataformas IONICS, LZT Sistema e Gerpos, incluindo migrações entre sistemas.</p>
+        </div>
+
+        <div class="entry">
+          <div class="row"><h3>Construtora Amarq Ltda</h3><span class="period">01/2009 – 03/2010</span></div>
+          <div class="role-title">Inspetor de Qualidade</div>
+          <div class="meta"><span>CNPJ 04.233.605/0001-83</span><span>João Monlevade, MG</span></div>
+          <p>Responsável pela garantia da certificação ISO 9001 (auditorias e acompanhamento junto à consultoria) e pela gestão financeira/administrativa: caixa interno, ERP, emissão de notas fiscais e contato com contabilidade e diretoria.</p>
+        </div>
+
+        <div class="entry">
+          <div class="row"><h3>Contatos Construções Ltda</h3><span class="period">04/2012 – 10/2012</span></div>
+          <div class="role-title">Auxiliar de Escritório</div>
+          <div class="meta"><span>CNPJ 13.083.742/0001-70</span><span>João Monlevade, MG</span></div>
+          <p>Assumiu toda a administração da construtora: admissões, compras, orçamentos, controle financeiro e emissão de NFS-e, além das obrigações fiscais e contábeis.</p>
+        </div>
+
+        <div class="entry">
+          <div class="row"><h3>Setem Serviços Técnicos de Montagens e Manutenção</h3><span class="period">1993 – 1999</span></div>
+          <div class="role-title">Técnico em Microinformática</div>
+          <div class="meta"><span>CNPJ 21.869.086</span><span>João Monlevade, MG</span></div>
+          <p>Começou como ajudante de mecânico e, durante o curso técnico em Microinformática, foi promovido a técnico e programador (Access, Visual Basic), operando o pacote Office completo e AutoCAD.</p>
+        </div>
+
+        <div class="entry">
+          <div class="row"><h3>Arcelor Brasil S.A.</h3><span class="period">10/1992 – 09/1993</span></div>
+          <div class="role-title">Menor Aprendiz</div>
+          <div class="meta"><span>CNPJ 24.315.012/0005-05</span><span>João Monlevade, MG</span></div>
+          <p>Projeto Curumim (Belgo Mineira, hoje Arcelor Mittal): formação em siderurgia e metalurgia, da mineração ao produto final, com treinamento técnico e de segurança do trabalho.</p>
+        </div>
+
+      </details>
+    </div>
+  </section>
+
+  <!-- FORMAÇÃO -->
+  <section id="formacao">
+    <div class="sec-head"><span class="sec-index">05</span><h2>Formação</h2><div class="sec-rule"></div></div>
+    <div class="panel frame"><span class="c1"></span><span class="c2"></span>
+      <div class="edu-item">
+        <h3>Ciências Contábeis</h3>
+        <div class="inst">Fasf — Faculdade de Filosofia, Ciências e Letras do Alto São Francisco</div>
+        <div class="yr">Trancado — conclusão prevista Dez/2023</div>
+      </div>
+      <div class="edu-item">
+        <h3>Técnico em Microinformática — Programador de Computador</h3>
+        <div class="inst">Colégio Kennedy — Rede Pitágoras</div>
+        <div class="yr">Concluído em 1996</div>
+      </div>
+      <div class="edu-item">
+        <h3>Ajustagem Mecânica, Solda, Elétrica, Tornos, Plainas e Eletrônica</h3>
+        <div class="inst">SENAI — João Monlevade, MG</div>
+        <div class="yr">Concluído em 1993</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCUMENTOS -->
+  <section id="documentos">
+    <div class="sec-head"><span class="sec-index">06</span><h2>Documentos &amp; Evidências</h2><div class="sec-rule"></div></div>
+    <div class="doc-grid">
+      <button class="doc-btn" onclick="window.open('/Evidencias/Curriculum.pdf','_blank')">Currículo em PDF</button>
+      <button class="doc-btn" onclick="window.open('/Evidencias/certificaken.pdf','_blank')">Certificado Téc. Microinformática</button>
+      <button class="doc-btn" onclick="window.open('/Evidencias/Ssenaicertifica.pdf','_blank')">Certificado SENAI</button>
+      <button class="doc-btn" onclick="window.open('/Evidencias/arcertificado.pdf','_blank')">Certificado Arcelor</button>
+      <button class="doc-btn" onclick="window.open('/Evidencias/arcppp.pdf','_blank')">PPP — Arcelor Mittal</button>
+      <button class="doc-btn" onclick="window.open('/Evidencias/contcaxuxa.pdf','_blank')">Contrato — Grupo Caxuxa</button>
+      <button class="doc-btn" onclick="window.open('/Evidencias/distrcaxuxa.pdf','_blank')">Distrato — Grupo Caxuxa</button>
+      <button class="doc-btn" onclick="window.open('/Evidencias/projetoscaxuxa.pdf','_blank')">Projetos — Grupo Caxuxa</button>
+      <button class="doc-btn" onclick="window.open('/Evidencias/arklokproducao.pdf','_blank')">Arklok — Localiza</button>
+      <button class="doc-btn" onclick="window.open('/Evidencias/algar.pdf','_blank')">Algar Tech — Termo Confiabilidade</button>
+      <button class="doc-btn" onclick="window.open('/Evidencias/positivo.pdf','_blank')">Grupo Positivo — ASO</button>
+      <button class="doc-btn" onclick="window.open('/Evidencias/termonavasemparar.pdf','_blank')">Nava/Sem Parar — Confidencialidade</button>
+      <button class="doc-btn" onclick="window.open('/Evidencias/contrastartec.pdf','_blank')">Startec — Contrato</button>
+      <button class="doc-btn" onclick="window.open('/Evidencias/fasfmatric.pdf','_blank')">Fasf — Matrícula/Trancamento</button>
+      <button class="doc-btn" onclick="window.open('/Evidencias/fasfsiccob.pdf','_blank')">Fasf — Treinamento Ciências Contábeis</button>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <span>© 2026 Christiano Cássio Miranda — <span style="color:var(--green)">SYS.CV // LOADED</span></span>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/christiano-c%C3%A1ssio-miranda-09917060" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:chriscassiomiranda@gmail.com">Email</a>
+      <a href="https://ccminforportifolio.netlify.app" target="_blank" rel="noopener">Portfólio</a>
+    </div>
+    <button class="print-btn" onclick="window.print()">Imprimir / Exportar PDF</button>
+  </footer>
+
+</div>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2WZ06X95Q4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2WZ06X95Q4');
+</script>
+
+</body>
+</html>
