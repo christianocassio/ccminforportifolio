@@ -150,9 +150,18 @@
   }
   .tag:hover{border-color:var(--green); color:var(--green);}
 
+  .comp-title {
+    font-family:'JetBrains Mono',monospace; font-size:.78rem; color:var(--blue);
+    margin-top: 18px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .05em;
+  }
+
   /* ---------- especialidade ---------- */
-  .lede{font-size:1.02rem; color:var(--text); max-width:66ch;}
-  .lede .hl{color:var(--green);}
+  .lede{font-size:1.02rem; color:var(--text); max-width:74ch; line-height: 1.7;}
+  .lede .hl{color:var(--green); font-weight: 500;}
+  .sub-section-title {
+    font-family:'Space Grotesk',sans-serif; font-size:1.15rem; color:var(--blue);
+    margin: 22px 0 8px 0; font-weight: 600;
+  }
 
   /* ---------- experiência: terminal log timeline ---------- */
   .log{border-left:1px solid var(--line); margin-left:6px; padding-left:0;}
@@ -235,7 +244,7 @@
     <div class="eyebrow">// curriculum vitae</div>
     <div class="avatar-ring"><img src="foto.png" alt="Foto de Christiano Cássio Miranda"></div>
     <h1 class="name">Christiano Cássio <span>Miranda</span></h1>
-    <div class="role">Analista &amp; Desenvolvedor de Sistemas</div>
+    <div class="role">Gestor de TI e Sistemas | Automação | Banco de Dados</div>
     <div class="quick-contacts">
       <span class="chip"><strong>Email</strong> · <a href="mailto:chriscassiomiranda@gmail.com">chriscassiomiranda@gmail.com</a></span>
       <span class="chip"><strong>Tel</strong> · (31) 9 7144-3766</span>
@@ -251,7 +260,7 @@
       <div class="grid-2">
         <div class="field"><span class="k">Nome</span><span class="v">Christiano Cássio Miranda</span></div>
         <div class="field"><span class="k">Estado civil</span><span class="v">Divorciado</span></div>
-        <div class="field"><span class="k">Endereço</span><span class="v">Belo Horizonte (Calafate) / João Monlevade — MG</span></div>
+        <div class="field"><span class="k">Endereço</span><span class="v">Belo Horizonte / João Monlevade — MG</span></div>
         <div class="field"><span class="k">CNH</span><span class="v">Categoria B</span></div>
         <div class="field"><span class="k">Tipo de contratação</span><span class="v">CLT ou PJ — a combinar</span></div>
         <div class="field"><span class="k">Disponibilidade</span><span class="v">Imediata</span></div>
@@ -259,38 +268,55 @@
     </div>
   </section>
 
-  <!-- CARGOS -->
+  <!-- ÁREAS DE ATUAÇÃO E COMPETÊNCIAS TÉCNICAS -->
   <section id="cargos">
-    <div class="sec-head"><span class="sec-index">02</span><h2>Áreas de Atuação</h2><div class="sec-rule"></div></div>
+    <div class="sec-head"><span class="sec-index">02</span><h2>Áreas de Atuação &amp; Competências</h2><div class="sec-rule"></div></div>
+    
+    <div class="comp-title">// Áreas de Atuação</div>
     <div class="tag-cloud">
-      <span class="tag">Gestor de TI &amp; SI</span>
-      <span class="tag">Gestor de Projetos de Implantação</span>
-      <span class="tag">Suporte &amp; Automação Comercial</span>
-      <span class="tag">Administração de Banco de Dados</span>
-      <span class="tag">SQL Server · PostgreSQL · MySQL · Access</span>
-      <span class="tag">Power BI (em treinamento)</span>
-      <span class="tag">Automação de Postos de Combustível</span>
-      <span class="tag">Programação (SQL, VB, Access, Office)</span>
-      <span class="tag">Gestão Administrativa &amp; Comercial</span>
-      <span class="tag">Inspeção &amp; Qualidade (ISO 9001)</span>
+      <span class="tag">Gestor de Tecnologia da Informação e Gestor de Sistemas</span>
+      <span class="tag">Gestor Comercial</span>
+      <span class="tag">Gestor de Projetos de Implantação Sistêmica</span>
+      <span class="tag">Técnico em Microinformática</span>
+      <span class="tag">Técnico em Inspeção da Qualidade</span>
+      <span class="tag">Técnico em Automação Comercial e Postos de Combustíveis</span>
+      <span class="tag">Técnico em Suporte, Automação e Sistemas</span>
+      <span class="tag">Técnico de Implantação e treinamento de Software</span>
+      <span class="tag">Técnico de Planejamento e Administrativo</span>
+    </div>
+
+    <div class="comp-title">// Competências Técnicas</div>
+    <div class="tag-cloud">
+      <span class="tag">Programação: SQL, Basic, Visual Basic, Python, HTML</span>
+      <span class="tag">Especialista em Access e Pacote Office Avançado</span>
+      <span class="tag">Desenvolvimento assistido por Inteligência Artificial (IA)</span>
+      <span class="tag">Bancos de Dados: PostgreSQL, SQL Server, MySQL, Access, PgAdmin</span>
+      <span class="tag">Automação Comercial e Sistemas de Gestão de Postos (LINX/TOTVS Autosystem, TEF, PDV)</span>
+      <span class="tag">Ambientes e IDEs: Visual Studio Code</span>
+      <span class="tag">Análise e Desenvolvimento de Sistemas (Cursando)</span>
+      <span class="tag">Ciências Contábeis (Trancado temporariamente)</span>
     </div>
   </section>
 
-  <!-- ESPECIALIDADE -->
+  <!-- RESUMO PROFISSIONAL & ESPECIALIDADE -->
   <section id="especialidade">
-    <div class="sec-head"><span class="sec-index">03</span><h2>Especialidade</h2><div class="sec-rule"></div></div>
+    <div class="sec-head"><span class="sec-index">03</span><h2>Resumo &amp; Especialidade</h2><div class="sec-rule"></div></div>
+    
+    <div class="sub-section-title">// Resumo Profissional</div>
     <p class="lede">
-  Mais de <span class="hl">25 anos de trajetória em TI</span>, construída entre a
-  <span class="hl">automação comercial e de postos de combustível</span>, a
-  <span class="hl">administração de banco de dados</span> (SQL Server, PostgreSQL, MySQL, LINX Autosystem)
-  e o <span class="hl">suporte técnico de campo</span> em operações de grande porte
-  (Localiza, Carrefour, Itaú/Santander).
-</p>
-<p class="lede" style="margin-top:14px;">
-  Da implantação de sistemas à <span class="hl">gestão de TI e SI multiempresa</span> — já respondendo
-  pela infraestrutura de mais de 40 CNPJs simultâneos — une profundidade técnica a uma visão completa
-  de gestão administrativa, fiscal e de qualidade (ISO 9001).
-</p>
+      Especialista em <span class="hl">Gestão de TI, Infraestrutura e Automação</span> com mais de <span class="hl">30 anos de sólida trajetória</span> no setor de Tecnologia da Informação, Sistemas e Automação Comercial, com forte expertise no segmento de combustíveis, logística e grandes operações corporativas. 
+    </p>
+    <p class="lede" style="margin-top:10px;">
+      Iniciou a carreira técnica em 1992 na ArcelorMittal (antiga Belgo Mineira), evoluindo para a liderança de projetos de implantação, infraestrutura e automação de postos de combustíveis em escala nacional. Destaca-se pela atuação estratégica como <span class="hl">Gestor de TI e SI do Grupo Caxuxa por quase 5 anos</span>, onde liderou a infraestrutura, bancos de dados e automação de uma operação complexa com mais de 40 CNPJs e 800 colaboradores.
+    </p>
+    <p class="lede" style="margin-top:10px;">
+      Possui ampla experiência em consultorias e projetos de curta e média duração para grandes marcas (Grupo Positivo, Algar Tech, Grupo Localiza, TOTVS, Sankhya, LINX), além de vivência em gestão administrativa e operacional de negócios. Atualmente, une sua sólida bagagem de infraestrutura e liderança ao desenvolvimento de software moderno, cursando Análise e Desenvolvimento de Sistemas (ADS) e aplicando Inteligência Artificial para otimização de processos, desenvolvimento (Python, HTML) e integrações via API.
+    </p>
+
+    <div class="sub-section-title">// Especialidade</div>
+    <p class="lede">
+      Gerenciamento de banco de dados, desenvolvimento de integrações, suporte e implantação de sistemas, infraestrutura de rede, automação comercial e gestão/consultoria para postos de combustíveis.
+    </p>
   </section>
 
   <!-- EXPERIÊNCIA -->
@@ -299,12 +325,11 @@
 
     <div class="log">
 
-      <!-- BEMISA MINERAÇÃO (ADICIONADA) -->
       <div class="entry">
-        <div class="row"><h3>Bemisa Mineração</h3><span class="period">07/2025 – 07/2026</span></div>
+        <div class="row"><h3>BEMISA MINERAÇÃO / BEMISA TECNOLOGIA DA INFORMAÇÃO</h3><span class="period">07/2025 – 07/2026</span></div>
         <div class="role-title">Assistente de Suporte Gestor de TI e Infraestrutura</div>
         <div class="meta"><span>Mina de Pedra Branca</span><span>João Monlevade, MG</span></div>
-        <p>Planejamento, implantação do zero e operação do ecossistema de TI da unidade. Execução de projeto de fibra óptica e rádio enlace redundante; estruturação física de CPDs locais com Cisco e Cisco Meraki; controle de acessos (AD, Intune, MFA); suporte nível N2/N3 (GLPI), transações e requisições via ERP TOTVS Protheus e gestão documental de terceiros (BANCODOC).</p>
+        <p>Responsável pelo planejamento, implantação do zero e operação de todo o ecossistema de TI da nova unidade de mineração. Planejamento de redes de fibra óptica e sistemas de rádio redundantes; estruturação física de CPDs com switches Cisco e APs Cisco Meraki; controle de identidade e acessos via Active Directory (AD) e Microsoft Intune com integrações via API (Microsoft Graph); administração de ERP TOTVS Protheus (perfis, acessos e Requisições de Compras); além de gerenciamento de contratos, faturamento de impressão (MAKSolution) e conformidade documental de terceiros (BANCODOC).</p>
       </div>
 
       <div class="entry">
@@ -403,9 +428,14 @@
     <div class="sec-head"><span class="sec-index">05</span><h2>Formação</h2><div class="sec-rule"></div></div>
     <div class="panel frame"><span class="c1"></span><span class="c2"></span>
       <div class="edu-item">
+        <h3>Graduação em Análise e Desenvolvimento de Sistemas (ADS)</h3>
+        <div class="inst">Anhanguera / Pitágoras</div>
+        <div class="yr">Cursando</div>
+      </div>
+      <div class="edu-item">
         <h3>Ciências Contábeis</h3>
         <div class="inst">Fasf — Faculdade de Filosofia, Ciências e Letras do Alto São Francisco</div>
-        <div class="yr">Trancado — conclusão prevista Dez/2023</div>
+        <div class="yr">Trancado Temporariamente (Concluiu 1,5 ano)</div>
       </div>
       <div class="edu-item">
         <h3>Técnico em Microinformática — Programador de Computador</h3>
